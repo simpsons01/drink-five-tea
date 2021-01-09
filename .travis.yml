@@ -1,0 +1,37 @@
+language: node_js
+
+node_js: 
+  - "10"
+
+branches:
+  only:
+    - prod
+
+cache: yarn
+
+install:
+  - npm install
+
+before_deploy:
+  - echo "node -v"
+
+jobs: 
+  include:
+    - stage: test
+      name: test
+      if: |
+        branch = prod AND \
+        type = push
+      script: 
+        - "yarn lint"
+    - stage: deploy
+      name: deploy
+      script: 
+        - "yarn build:prod"
+      deploy:
+        provider: "s3"
+        access_key_id: "${AWS_ACCESS_KEY}"
+        secret_access_key: "${AWS_SECRET_KEY}"
+        bucket: "S3 Bucket"
+        local_dir: "dist"
+        skip_cleanup: true
