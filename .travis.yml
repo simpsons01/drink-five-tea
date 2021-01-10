@@ -5,6 +5,8 @@ node_js:
 
 branches:
   only:
+    - master
+    - staging
     - prod
 
 cache: yarn
@@ -12,26 +14,30 @@ cache: yarn
 install:
   - npm install
 
-before_deploy:
-  - echo "node -v"
-
 jobs: 
   include:
     - stage: test
+      name: test
       if: |
-        branch = prod AND \
-        type = push
+        branch =~ /(master|staging|prod)/ AND \
+        type = pull_request
       script: 
         - "yarn lint"
     - stage: deploy
+      name: deploy
+      if: |
+        branch =~ /(staging|prod)/ AND \
+        type = push
       script: 
-        - "yarn build:prod"
+        - "yarn build:${$TRAVIS_BRANCH}"
       deploy:
-        on: 
-          branch: "prod"
         provider: "s3"
         access_key_id: "${AWS_ACCESS_KEY}"
         secret_access_key: "${AWS_SECRET_KEY}"
         bucket: "${AWS_S3_BUCKET}"
         local_dir: "dist"
-        skip_cleanup: true
+        skip_cleanup: true        
+        on: 
+          branch: 
+            - staging
+            - prod
