@@ -29,7 +29,7 @@ jobs:
         branch =~ /(staging|prod)/ AND \
         type = push
       script: 
-        - "yarn build:${$TRAVIS_BRANCH}"
+        - "yarn build:${TRAVIS_BRANCH}"
       deploy:
         provider: "s3"
         access_key_id: "${AWS_ACCESS_KEY}"
