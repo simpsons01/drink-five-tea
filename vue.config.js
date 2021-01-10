@@ -1,4 +1,3 @@
-const path = require("path")
 const isDev = process.env.VUE_APP_ENV === "development"
 
 module.exports = {
