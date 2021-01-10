@@ -2,6 +2,7 @@
   <div id="app">
     <img :src="env.VUE_APP_STATIC_PATH + 'logo.png'">
     <p>pratice ci/cd and s3 deploy</p>
+    <p>test</p>
   </div>
 </template>
 
