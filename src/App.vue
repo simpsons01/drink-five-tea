@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img :src="env.VUE_APP_STATIC_PATH + 'logo.png'">
+    <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'">
     <p>pratice ci/cd and s3 deploy</p>
     <p>test</p>
   </div>
