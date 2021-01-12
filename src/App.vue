@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'">
-    <p>pratice ci/cd and s3 deploy</p>
+    <p class="h1">pratice ci/cd and s3 deploy</p>
     <p>test</p>
+    <div class="container" style="height: 200px; background: black"></div>
   </div>
 </template>
 
@@ -20,13 +21,9 @@ export default {
 </script>
 
 
-<style>
-body, html {
-  height: 100%;
-  min-height: 100%;
-}
-
-#app > p {
-  color: red
+<style lang="scss">
+@import "~@/scss/base.scss";
+p {
+  color: $primary
 }
 </style>

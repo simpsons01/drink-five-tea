@@ -12,7 +12,7 @@ branches:
 cache: yarn
 
 install:
-  - npm install
+  - yarn
 
 jobs: 
   include:
