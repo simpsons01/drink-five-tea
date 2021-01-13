@@ -4,15 +4,15 @@
 @import "../../node_modules/bootstrap/scss/mixins";
 
 // import custom scss
-@import "./bootstrap/variables";
+@import "./variables";
 
-// optional import 
+// optional import
 @import "../../node_modules/bootstrap/scss/reboot";
 @import "../../node_modules/bootstrap/scss/images";
 @import "../../node_modules/bootstrap/scss/grid";
 @import "../../node_modules/bootstrap/scss/utilities";
 
-@import "./bootstrap/mixin";
-@import "./bootstrap/typography";
-@import "./bootstrap/font";
-@import "./bootstrap/grid"
+@import "./custom/mixin";
+@import "./custom/typography";
+@import "./custom/font";
+@import "./custom/grid";
