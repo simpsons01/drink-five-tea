@@ -14,17 +14,20 @@
       </div>
     </div>
     <foo />
+    <radio class="ml-1" style="margin-left: 20px" />
   </div>
 </template>
 3
 <script>
 import env from "@/utility/env"
 import Foo from "@/component/Foo"
+import radio from "@/component/radio"
 
 export default {
   name: 'App',
   components: {
-    Foo
+    Foo,
+    radio
   },
   data() {
     return {

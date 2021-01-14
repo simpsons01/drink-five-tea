@@ -1,10 +1,10 @@
-@mixin media-break-point-up($key) {
+@mixin media-breakpoint-up($key) {
   @media screen and (min-width: map-get($grid-breakpoints, $key)) {
     @content;
   }
 }
 
-@mixin media-break-point-down($key) {
+@mixin media-breakpoint-down($key) {
   @media screen and (max-width: map-get($grid-breakpoints, $key)) {
     @content;
   }

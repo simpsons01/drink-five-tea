@@ -37,7 +37,6 @@ $yellow: #ffc107;
 $green: #28a745;
 $teal: #20c997;
 $cyan: #17a2b8;
-$custom-orange: #ffc78e;
 
 $colors: ();
 $colors: map-merge(
@@ -59,8 +58,8 @@ $colors: map-merge(
   $colors
 );
 
-$primary: $custom-orange;
-$secondary: $gray-600;
+$primary: #00cd7e;
+$secondary: #d4b111;
 $success: $green;
 $info: $cyan;
 $warning: $yellow;
@@ -84,7 +83,7 @@ $theme-colors: map-merge(
 );
 
 //font-custsom
-$font-family-base-serif: Arial, "MsJhengHeiBold", "微軟正黑體",
+$font-family-base-serif: PingFangTC, "MsJhengHeiBold", "微軟正黑體",
   "Microsoft JhengHei", Roboto, "PingFangTC", sans-serif;
 $font-family-base: $font-family-base-serif;
 
