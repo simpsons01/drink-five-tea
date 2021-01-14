@@ -83,8 +83,8 @@ $theme-colors: map-merge(
 );
 
 //font-custsom
-$font-family-base-serif: PingFangTC, "MsJhengHeiBold", "微軟正黑體",
-  "Microsoft JhengHei", Roboto, "PingFangTC", sans-serif;
+$font-family-base-serif: "PingFangTC", "MsJhengHeiBold", "微軟正黑體",
+  "Microsoft JhengHei", Roboto, sans-serif;
 $font-family-base: $font-family-base-serif;
 
 $font-size-base: 16px;

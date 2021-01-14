@@ -1,12 +1,9 @@
 <template>
 <div>
-  <p>123</p>
-  <ul>
-    vue-router, vuex, axios, google map iframe embed, vue-cookies mapbox
-  </ul>
+  <p>Foo2</p>
   <radio 
-   :bindValue="''"
-   :value="''"
+   :bindValue="'Foo2'"
+   :value="'Foo2'"
   />
 </div>
 </template>
@@ -26,6 +23,10 @@ export default {
 p {
   @include media-breakpoint-up(lg) {
     color: $primary
+  }
+
+  ul {
+    background: cadetblue;
   }
 }
 </style>
