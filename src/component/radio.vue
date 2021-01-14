@@ -1,42 +1,58 @@
 <template>
-  <label class="radio">
+  <label 
+    class="radio"
+    :class="{ 
+      'checked': checked,
+      'disabled': disabled
+    }"
+  >
     <input 
       type="radio"
-      :checked="true"
-      :disabled="false"
+      :checked="checked"
+      :disabled="disabled"
       :value="value"
+      @change="$emit('change', $event.target.value)"
     >
-    <span class="radio-sign"></span>
-    <span class="radio-text">104人力銀行_一零四資訊科技股份有限公司</span>
+    <span class="radio-sign" /> 
+    <span 
+      class="radio-text"
+      v-text="calcText"
+    />
   </label>
 </template>
 
 <script>
-import isEqual from "lodash/isEqual"
 
 export default {
   name: "Radio",
+  model: {
+    prop: "checked",
+    event: "change"
+  },
   props: {
     text: {
       type: String,
-      required: true
+      default: () => ("")
     },
     value: {
-      type: [Object, Number, String, Boolean],
+      type: [Number, String, Boolean],
       required: true
     },
     bindValue: {
-      type: [Object, Number, String, Boolean],
+      type: [Number, String, Boolean],
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: () => (false)
     }
   },
   computed: {
     checked() {
-      if(typeof this.value === "number" || typeof this.value === "string" || typeof this.value === "boolean") {
-        return this.value === this.bindValue
-      }else {
-
-      }
+      return this.value === this.bindValue && !this.disabled
+    },
+    calcText() {
+      return this.text ? this.text : this.value
     }
   }
 }
@@ -51,6 +67,7 @@ $radio-margin: 8px;
 .radio {
   cursor: pointer;
   position: relative;
+  height: $radio-size;
 
   > * {
     vertical-align: middle;
@@ -108,10 +125,9 @@ $radio-margin: 8px;
     color:  $black;
   }
 
-  input[type="radio"]:checked ~ span {
-    
+  &.checked &-sign {
     color: $primary;
-     
+    
     &::before {
       border-color: $primary;
     }
@@ -120,6 +136,25 @@ $radio-margin: 8px;
       width: 12px;
       height: 12px;
     }
+  }
+
+  &.checked &-text {
+    color: $primary
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.disabled &-sign {
+    
+    &::before {
+      border-color: $gray-400
+    }
+  }
+
+  &.disabled &-text {
+    color: $gray-400
   }
 }
 </style>

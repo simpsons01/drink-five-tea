@@ -14,9 +14,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/scss/variables";
+@import "~@/scss/custom/mixin";
 
 p {
-  color: $primary
+  @include media-breakpoint-up(lg) {
+    color: $primary
+  }
 }
 </style>
