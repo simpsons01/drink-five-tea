@@ -1,14 +1,44 @@
 <template>
   <label class="radio">
-    <input type="radio">
+    <input 
+      type="radio"
+      :checked="true"
+      :disabled="false"
+      :value="value"
+    >
     <span class="radio-sign"></span>
     <span class="radio-text">104人力銀行_一零四資訊科技股份有限公司</span>
   </label>
 </template>
 
 <script>
+import isEqual from "lodash/isEqual"
+
 export default {
   name: "Radio",
+  props: {
+    text: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: [Object, Number, String, Boolean],
+      required: true
+    },
+    bindValue: {
+      type: [Object, Number, String, Boolean],
+      required: true
+    }
+  },
+  computed: {
+    checked() {
+      if(typeof this.value === "number" || typeof this.value === "string" || typeof this.value === "boolean") {
+        return this.value === this.bindValue
+      }else {
+
+      }
+    }
+  }
 }
 </script>
 
@@ -31,11 +61,10 @@ $radio-margin: 8px;
     outline: none;
     position: absolute;
     z-index: -1;
-    top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
+    top: 0;
+    width: 0;
+    height: 0;
   }
 
   &-sign {
