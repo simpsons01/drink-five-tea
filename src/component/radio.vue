@@ -1,28 +1,24 @@
 <template>
-  <label 
+  <label
     class="radio"
-    :class="{ 
-      'checked': checked,
-      'disabled': disabled
+    :class="{
+      checked: checked,
+      disabled: disabled
     }"
   >
-    <input 
+    <input
       type="radio"
       :checked="checked"
       :disabled="disabled"
       :value="value"
       @change="$emit('change', $event.target.value)"
-    >
-    <span class="radio-sign" /> 
-    <span 
-      class="radio-text"
-      v-text="calcText"
     />
+    <span class="radio-sign" />
+    <span class="radio-text" v-text="calcText" />
   </label>
 </template>
 
 <script>
-
 export default {
   name: "Radio",
   model: {
@@ -32,7 +28,7 @@ export default {
   props: {
     text: {
       type: String,
-      default: () => ("")
+      default: () => ""
     },
     value: {
       type: [Number, String, Boolean],
@@ -44,7 +40,7 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: () => (false)
+      default: () => false
     }
   },
   computed: {
@@ -91,7 +87,7 @@ $radio-margin: 8px;
     padding: 2px;
     position: relative;
     margin-right: $radio-margin;
-    
+
     &::before {
       content: "";
       display: inline-block;
@@ -122,12 +118,12 @@ $radio-margin: 8px;
     font-size: 16px;
     line-height: 22px;
     padding: 1px 0;
-    color:  $black;
+    color: $black;
   }
 
   &.checked &-sign {
     color: $primary;
-    
+
     &::before {
       border-color: $primary;
     }
@@ -139,7 +135,7 @@ $radio-margin: 8px;
   }
 
   &.checked &-text {
-    color: $primary
+    color: $primary;
   }
 
   &.disabled {
@@ -147,14 +143,13 @@ $radio-margin: 8px;
   }
 
   &.disabled &-sign {
-    
     &::before {
-      border-color: $gray-400
+      border-color: $gray-400;
     }
   }
 
   &.disabled &-text {
-    color: $gray-400
+    color: $gray-400;
   }
 }
 </style>

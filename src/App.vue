@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'">
+    <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'" />
     <p>{{ gender }}</p>
     <Foo />
     <Foo2 />
@@ -13,7 +13,7 @@ import Foo from "@/component/Foo"
 import Foo2 from "@/component/Foo2"
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Foo,
     Foo2
@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       env,
-      gender: '123'
-    }  
+      gender: "123"
+    }
   }
 }
 </script>
@@ -33,9 +33,8 @@ export default {
 <style lang="scss" scoped>
 @import "~@/scss/variables";
 #app {
-  
   p {
-    color: $primary
+    color: $primary;
   }
 }
 </style>
