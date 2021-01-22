@@ -2,7 +2,7 @@
   <div id="app">
     <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'" />
     <p>{{ gender }}</p>
-    <p>test</p>
+    <p>test123</p>
   </div>
 </template>
 3
