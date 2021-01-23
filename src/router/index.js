@@ -1,9 +1,15 @@
-import VueRouter from "vue-router"
+import Index from "../view/Index"
+import About from "../view/About"
 
-const routes = []
+const routes = [
+  {
+    path: "/about",
+    component: About
+  },
+  {
+    path: "/",
+    component: Index
+  }
+]
 
-const router = new VueRouter({
-  routes
-})
-
-export default router
+export default routes
