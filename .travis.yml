@@ -5,91 +5,36 @@ node_js:
 
 branches:
   only:
-<<<<<<< Updated upstream
-    - lab
-=======
     - master
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-    - staging
-    - prod
-=======
->>>>>>> Stashed changes
 
 cache: yarn
 
 install:
   - yarn
 
-<<<<<<< Updated upstream
-before_script: chmod -R +x scripts
-
-script:
-  - ./scripts/test.sh
-  - ./scripts/build.sh
-
-deploy:
-  provider: "s3"
-  access_key_id: "${AWS_ACCESS_KEY}"
-  secret_access_key: "${AWS_SECRET_KEY}"
-  bucket: "${AWS_S3_BUCKET}"
-  local_dir: "dist"
-  skip_cleanup: true
-  on:
-    branch:
-      - lab
-      - staging
-      - prod
-=======
-<<<<<<< Updated upstream
-jobs: 
-=======
 jobs:
->>>>>>> Stashed changes
   include:
     - stage: test
       name: test
       if: |
-<<<<<<< Updated upstream
-        branch =~ /(master|staging|prod)/ AND \
-        type = pull_request
-      script: 
-=======
         branch =~ /(master)/ AND \
         type = pull_request
       script:
->>>>>>> Stashed changes
         - "yarn lint"
     - stage: deploy
       name: deploy
       if: |
-<<<<<<< Updated upstream
-        branch =~ /(staging|prod)/ AND \
-        type = push
-      script: 
-        - "yarn build:${$TRAVIS_BRANCH}"
-=======
         branch =~ /(master)/ AND \
         type = push
       script:
         - "yarn build:prod"
->>>>>>> Stashed changes
       deploy:
         provider: "s3"
         access_key_id: "${AWS_ACCESS_KEY}"
         secret_access_key: "${AWS_SECRET_KEY}"
         bucket: "${AWS_S3_BUCKET}"
         local_dir: "dist"
-<<<<<<< Updated upstream
-        skip_cleanup: true        
-        on: 
-          branch: 
-            - staging
-            - prod
-=======
         skip_cleanup: true
         on:
           branch:
             - master
->>>>>>> Stashed changes
->>>>>>> Stashed changes
