@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'" />
-    <p>{{ gender }}</p>
+    <router-view />
   </div>
 </template>
 3
@@ -13,22 +13,20 @@ export default {
   components: {},
   data() {
     return {
-      env,
-      gender: "123"
+      env
     }
   }
 }
 </script>
 
-<style lang="scss">
-@import "~@/scss/base";
-</style>
-<style lang="scss" scoped>
-@import "~@/scss/variables";
+<style>
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+}
 
-#app {
-  p {
-    color: $primary;
-  }
+#app > p {
+  color: red;
 }
 </style>
