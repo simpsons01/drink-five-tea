@@ -10,7 +10,8 @@ branches:
 cache: yarn
 
 before_install:
-    - if [ $TRAVIS_BRANCH == "master" ]; then
+    - |
+      if [ $TRAVIS_BRANCH == "master" ]; then
         export BUILD_ENV=prod
       fi
 
