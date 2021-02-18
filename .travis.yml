@@ -26,7 +26,7 @@ jobs:
         branch =~ /(master)/ AND \
         type = pull_request
       script:
-        - yarn lint:${BUILD_ENV}
+        - yarn lint
     - stage: deploy
       name: deploy
       if: |
