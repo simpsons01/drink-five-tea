@@ -1,6 +1,6 @@
 language: node_js
 
-node_js:
+node_js: 
   - "10"
 
 branches:
@@ -9,25 +9,30 @@ branches:
 
 cache: yarn
 
+before_install:
+  - if[[$TRAVIS_BRANCH == "master" ]]; then
+      export BUILD_ENV=prod 
+    fi
+
 install:
   - yarn
 
 jobs:
   include:
-    - stage: test
-      name: test
+    - stage: lint
+      name: lint
       if: |
         branch =~ /(master)/ AND \
         type = pull_request
       script:
-        - "yarn lint"
+        - "yarn lint:${BUILD_ENV}"
     - stage: deploy
       name: deploy
       if: |
         branch =~ /(master)/ AND \
         type = push
       script:
-        - "yarn build:prod"
+        - "yarn build:${BUILD_ENV}"
       deploy:
         provider: "s3"
         access_key_id: "${AWS_ACCESS_KEY}"
