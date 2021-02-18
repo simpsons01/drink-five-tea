@@ -1,6 +1,6 @@
 <template>
   <div>
-    this is about page 123
+    this is about page 123456
   </div>
 </template>
 
