@@ -1,46 +1,40 @@
 language: node_js
 
-node_js: 
+node_js:
   - "10"
 
 branches:
   only:
+    - lab
+    - staging
     - master
 
 cache: yarn
 
-before_install:
-    - |
-      if [ $TRAVIS_BRANCH == "master" ]; then
-        export BUILD_ENV=prod
-      fi
-
 install:
   - yarn
 
-jobs:
-  include:
-    - stage: lint
-      name: lint
-      if: |
-        branch =~ /(master)/ AND \
-        type = pull_request
-      script:
-        - yarn lint
-    - stage: deploy
-      name: deploy
-      if: |
-        branch =~ /(master)/ AND \
-        type = push
-      script:
-        - yarn build:${BUILD_ENV}
-      deploy:
-        provider: "s3"
-        access_key_id: "${AWS_ACCESS_KEY}"
-        secret_access_key: "${AWS_SECRET_KEY}"
-        bucket: "${AWS_S3_BUCKET}"
-        local_dir: "dist"
-        skip_cleanup: true
-        on:
-          branch:
-            - master
+before_script:
+  - yarn lint
+
+script:
+  - |
+    if [ $TRAVIS_BRANCH == "lab" ]; then
+       yarn build:lab
+    elif [ $TRAVIS_BRANCH == "staging" ]; then
+       yarn build:staging
+    elif [ $TRAVIS_BRANCH == "master" ]; then
+       yarn build:prod
+    fi
+deploy:
+  provider: s3
+  access_key_id: ${AWS_ACCESS_KEY}
+  secret_access_key: ${AWS_SECRET_KEY}
+  bucket: ${AWS_S3_BUCKET}
+  local_dir: "dist"
+  skip_cleanup: true
+  on:
+    branch:
+      - master
+      - lab
+      - staging
