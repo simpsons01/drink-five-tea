@@ -1,31 +1,32 @@
 <template>
   <div id="app">
-    <img :src="env.VUE_APP_STATIC_PATH + 'logo.png'">
-    <p>pratice ci/cd and s3 deploy</p>
+    <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'" />
+    <router-view />
   </div>
 </template>
-
+3
 <script>
 import env from "@/utility/env"
 
 export default {
-  name: 'App',
+  name: "App",
+  components: {},
   data() {
     return {
       env
-    }  
+    }
   }
 }
 </script>
 
-
 <style>
-body, html {
+body,
+html {
   height: 100%;
   min-height: 100%;
 }
 
 #app > p {
-  color: red
+  color: red;
 }
 </style>

@@ -1,20 +1,16 @@
-const isDev = process.env.VUE_APP_ENV === "development"
+const configFunc = require("./output");
+const path = require("path");
+const isDev = process.env.NODE_ENV === "development"
+const output = configFunc(process.argv[4], isDev)
+
+
+console.log(output)
 
 module.exports = {
-  chainWebpack: config => {
-    if(!isDev) {
-      config.plugins.delete('html')
-      config.plugins.delete('preload')
-      config.plugins.delete('prefetch')
-    }
-  },
+  productionSourceMap: false,
+  assetsDir: output.assetsDir,
+  pages: output.pages,
   configureWebpack: {
-    output: {
-      filename: `[name].[${isDev ? 'hash' : 'contenthash'}].js`,
-      chunkFilename: `[name].[${isDev ? 'hash' : 'contenthash'}].js` 
-    }
+    plugins: output.plugins
   },
-  css: {
-    extract: !isDev
-  }
-}
+};
