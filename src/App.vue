@@ -2,6 +2,7 @@
   <div id="app">
     <img :src="env.VUE_APP_STATIC_PATH + 'img/logo.png'" />
     <router-view />
+    123
   </div>
 </template>
 3
